@@ -64,3 +64,16 @@ class Snake :
     
     def get_snake_size(self):
         return self.snake_curr_size
+    def reset(self):
+        for tim in self.tims:
+            tim.hideturtle()
+        self.tims = [Turtle(shape="square"),Turtle(shape="square"),Turtle(shape="square")]
+        self.snake_curr_size:int = 3
+        self.heading = 0
+        self.speed=START_SNAKE_SPEED  #movement in second 
+        self.last_pos = None
+        for index,tim in enumerate(self.tims):
+            tim.color("green")
+            tim.penup()
+            tim.teleport(STARTING_COORDINATE[0]-index*SQUARE_SIZE,STARTING_COORDINATE[1])
+        self.screen.update()

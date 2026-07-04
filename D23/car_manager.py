@@ -32,8 +32,8 @@ class CarManager:
         # next_car_interval = random.randint(500,2000)
         # car.screen.ontimer(fun=self.spawn_car,t=next_car_interval)
     def collision_bounds(self,car:Turtle):
-        (ymin,ymax) = (car.ycor()-HALF_CAR_WIDTH,car.ycor()+HALF_CAR_WIDTH)
-        (xmin,xmax) = (car.xcor()-HALF_CAR_HEIGHT,car.xcor()+HALF_CAR_HEIGHT)
+        (ymin,ymax) = (car.ycor()-HALF_CAR_HEIGHT,car.ycor()+HALF_CAR_HEIGHT)
+        (xmin,xmax) = (car.xcor()-HALF_CAR_WIDTH,car.xcor()+HALF_CAR_WIDTH)
         return ((xmin,xmax),(ymin,ymax))
     def get_cars(self):
         return self.cars

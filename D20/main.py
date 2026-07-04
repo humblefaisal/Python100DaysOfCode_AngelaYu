@@ -15,11 +15,13 @@ screen.onkey(key='Down',fun=lambda : snake.setHeading(-90))
 screen.onkey(key='s',fun=lambda : snake.set_speed(1))
 screen.onkey(key='f',fun=lambda : snake.set_speed(1000))
 screen.onkey(key='p',fun=lambda : snake_game.set_pause())
+screen.onkey(key='e',fun=lambda : snake_game.reset())
 fruit = Fruit(screen=screen)
 snake = Snake(screen=screen)
 snake_game = SnakeGame(snake=snake,fruit=fruit,screen=screen)
 
 
 snake_game.gameLoop()
+
 # while not snake.gameover():
 done()
