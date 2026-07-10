@@ -46,4 +46,8 @@ class Timer(Turtle):
             self.stop_timer = not self.stop_timer
         else :
             self.stop_timer = set_value
+
+    def is_timeup(self):
+        return self.timeup
+    
         

@@ -6,7 +6,7 @@ class QuizManager(Turtle):
         super().__init__(shape, undobuffersize, visible)
         self.penup()
         self.state_data = pandas.read_csv(FILENAME)
-        self.guessed_states:set = set()
+        self.guessed_states = []
         self.total_states = len(self.state_data.state)
         self.state_names = set(self.state_data.state)
         self.game_complete = False
@@ -21,10 +21,10 @@ class QuizManager(Turtle):
         state_name = state_name.title()
         if state_name not in self.guessed_states and state_name in self.state_names : 
             state_row = self.state_data[self.state_data.state == state_name]
-            (x,y) = (int(state_row.x),int(state_row.y))
+            (x,y) = (int(state_row.x.item()),int(state_row.y.item()))
             self.goto(x,y)
             self.write(state_name)
-            self.guessed_states.add(state_name)
+            self.guessed_states.append(state_name)
         if len(self.guessed_states) < self.total_states and not self.gameover:
             self.screen.ontimer(fun=self.prompt,t=50)
         else :
@@ -33,3 +33,5 @@ class QuizManager(Turtle):
         return self.game_complete
     def set_gameover(self):
         self.gameover = True
+    def get_guessed_states(self):
+        return self.guessed_states
