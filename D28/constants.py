@@ -15,3 +15,5 @@ START_SECONDS = 0
 
 WORK = True
 BREAK = False
+
+IMAGE_PATH = "tomato.png"

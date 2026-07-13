@@ -1,8 +1,8 @@
 import tkinter as tk
 from constants import *
-class Timer(tk.Label):
-    def __init__(self, timeup_callback=None,bg=None):
-        super().__init__(bg=None)
+class Timer(tk.Canvas):
+    def __init__(self, parent ,width,height,timeup_callback=None,image_path=IMAGE_PATH):
+        super().__init__(master=parent,width=width,height=height,highlightthickness=0,bg=YELLOW)
         self.hours = 0
         self.minutes = 0
         self.seconds = 0
@@ -10,7 +10,9 @@ class Timer(tk.Label):
         self.mode = WORK
         self.running = False
         self.timeup_callback = timeup_callback
-        self.config(font=("Courier",20,"bold"))
+        self.tomato_png=tk.PhotoImage(file=image_path) 
+        self.create_image(width/2,height/2,image=self.tomato_png)
+        self.text_id = self.create_text(width/2,height/2+10,text="",font=(FONT_NAME,25,"bold"),fill="white")
         self.update_timer()
         # self.start_timer()
     
@@ -69,7 +71,7 @@ class Timer(tk.Label):
     
     def update_timer(self):
         label_str = f"{self.hours:02d}:{self.minutes:02d}:{self.seconds:02d}"
-        self.config(text=label_str)
+        self.itemconfig(tagOrId=self.text_id,text=label_str)
 
     def get_level(self):
         return self.level
