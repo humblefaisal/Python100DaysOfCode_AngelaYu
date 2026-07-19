@@ -17,6 +17,7 @@ def start_timer():
 def timeup_callback():
     global timer
     work_label.config(text=timer.get_mode())
+    level_label.config(text=timer.get_level_label())
     bring_front()
 
 
@@ -48,6 +49,9 @@ start_button.grid(column=0,row=2)
 reset_button = tk.Button(text="RESET")
 reset_button.config(command=lambda: timer.reset_timer())
 reset_button.grid(column=2,row=2)
+
+level_label = tk.Label(text="")
+level_label.grid(column=1,row=2)
 
 timer = Timer(parent=root,width=200,height=224,timeup_callback=timeup_callback)
 timer.grid(row=1,column=1)

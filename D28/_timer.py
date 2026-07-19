@@ -82,4 +82,6 @@ class Timer(tk.Canvas):
             return "WORK"
         else :
             return "BREAK"
+    def get_level_label(self):
+        return "✅"*(self.level-1)
         
